@@ -3,6 +3,8 @@
 > **Neo-Brutalist Animal-Care & Discovery Platform for Pet Parents across India**  
 > Product & Technology Intern Assignment Prototype
 
+🌐 **Live Demo**: [https://pawzz-assignment.vercel.app/](https://pawzz-assignment.vercel.app/)
+
 ---
 
 ## 🌟 Overview
