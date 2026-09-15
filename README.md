@@ -9,7 +9,7 @@
 
 **Pawzz** solves the fragmented animal-care discovery problem in India. When pet parents or rescuers face an emergency or need everyday care for their dogs, cats, birds, or exotic pets, Pawzz connects them with verified vets, 24/7 clinics, ambulances, NGOs, and boarding facilities in one high-contrast, intuitive platform.
 
-Built with a bold **Neo-Brutalism** design system inspired by [Ronas IT](https://ronasit.com/), featuring chunky tactile borders, hard zero-blur drop shadows, saturated color pops, and a custom **fluffy cat paw cursor**.
+Built with a bold **Neo-Brutalism** design system inspired by [Ronas IT](https://ronasit.com/), featuring chunky tactile borders, hard zero-blur drop shadows, and saturated color pops.
 
 ---
 
@@ -76,7 +76,7 @@ npm run lint
 - **Framework**: React 19 + Vite 8
 - **Styling**: Pure Vanilla CSS design system with Neo-Brutalist design tokens
 - **Typography**: Google Fonts (*Space Grotesk* + *Plus Jakarta Sans*)
-- **Icons & Cursors**: Custom SVG Neo-Brutalist artwork & multi-resolution `.cur` assets
+- **Icons & Artwork**: Custom SVG Neo-Brutalist illustrations & icons
 - **Code Quality**: Oxlint (0 errors, 0 warnings)
 
 ---
