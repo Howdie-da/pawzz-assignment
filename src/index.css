@@ -1,0 +1,380 @@
+/* =====================================================
+   PAWZZ — Neo-Brutalism Global Design System
+   Inspired by modern Neo-Brutalist aesthetics (Ronas IT)
+   ===================================================== */
+
+:root {
+  /* Color Palette */
+  --clr-bg: #FFFDF0;
+  /* Warm retro eggshell/cream canvas */
+  --clr-bg-alt: #F4EEDF;
+  /* Slightly deeper cream for sections */
+  --clr-card: #FFFFFF;
+  /* Crisp stark white card body */
+  --clr-black: #121212;
+  /* High-contrast ink border & text */
+  --clr-text-primary: #121212;
+  /* Primary typography */
+  --clr-text-secondary: #4A4A4A;
+  /* Readable dark grey */
+  --clr-text-muted: #737373;
+  /* Subtext & meta */
+
+  /* Neo-Brutalist Saturated Color Pops */
+  --clr-primary: #FFE600;
+  /* Electric Cyber Canary */
+  --clr-primary-light: #FFF066;
+  --clr-primary-dark: #E6CE00;
+
+  --clr-accent: #FF5A5F;
+  /* Hot Coral / Flame Red */
+  --clr-accent-light: #FF8084;
+
+  --clr-mint: #2EE59D;
+  /* Acid Green / Mint */
+  --clr-mint-light: #A7F3D0;
+
+  --clr-blue: #38BDF8;
+  /* Electric Cyan / Sky */
+  --clr-blue-light: #BAE6FD;
+
+  --clr-purple: #C084FC;
+  /* Vibrant Purple / Lilac */
+  --clr-purple-light: #E9D5FF;
+
+  --clr-orange: #FB923C;
+  /* Punchy Tangerine */
+  --clr-orange-light: #FED7AA;
+
+  --clr-emerald: #2EE59D;
+  --clr-amber: #F59E0B;
+
+  /* Borders */
+  --border-thick: 3px solid #121212;
+  --border-main: 2.5px solid #121212;
+  --border-thin: 2px solid #121212;
+  --clr-border: #121212;
+
+  /* Neo-Brutalism Hard Drop Shadows (No blur!) */
+  --shadow-xs: 2px 2px 0px #121212;
+  --shadow-sm: 3px 3px 0px #121212;
+  --shadow-md: 5px 5px 0px #121212;
+  --shadow-lg: 8px 8px 0px #121212;
+  --shadow-xl: 12px 12px 0px #121212;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Spacing */
+  --sp-xs: 4px;
+  --sp-sm: 8px;
+  --sp-md: 16px;
+  --sp-lg: 24px;
+  --sp-xl: 32px;
+  --sp-2xl: 48px;
+  --sp-3xl: 64px;
+
+  /* Radius (Crisp geometric brutalism with friendly softened corners) */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-full: 9999px;
+
+  /* Transitions */
+  --t-fast: 120ms cubic-bezier(0.2, 0, 0, 1);
+  --t-base: 180ms cubic-bezier(0.2, 0, 0, 1);
+  --t-bounce: 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =====================================================
+   RESET & BASE
+   ===================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--clr-bg);
+  /* Subtle brutalist graph paper grid */
+  background-image:
+    radial-gradient(#121212 0.75px, transparent 0.75px),
+    radial-gradient(#121212 0.75px, var(--clr-bg) 0.75px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+  color: var(--clr-text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================================================
+   TYPOGRAPHY UTILITIES
+   ===================================================== */
+.font-display {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01" on, "ss02" on;
+}
+
+/* =====================================================
+   NEO-BRUTALISM CARD (Replaces dark glass)
+   ===================================================== */
+.glass {
+  background: var(--clr-card);
+  border: var(--border-main);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--r-lg);
+  position: relative;
+}
+
+.glass-hover {
+  transition: transform var(--t-bounce), box-shadow var(--t-bounce);
+}
+
+.glass-hover:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* =====================================================
+   BUTTONS (Chunky, Tactile, High-Contrast)
+   ===================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 10px 22px;
+  border-radius: var(--r-md);
+  border: var(--border-main);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform var(--t-fast), box-shadow var(--t-fast), background-color var(--t-fast);
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  color: var(--clr-black);
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #121212;
+}
+
+.btn-primary {
+  background: var(--clr-primary);
+  color: var(--clr-black);
+}
+
+.btn-primary:hover {
+  background: var(--clr-primary-light);
+}
+
+.btn-accent {
+  background: var(--clr-accent);
+  color: #FFFFFF;
+}
+
+.btn-accent:hover {
+  background: #FF3B42;
+}
+
+.btn-ghost {
+  background: #FFFFFF;
+  color: var(--clr-black);
+}
+
+.btn-ghost:hover {
+  background: #FFF8D6;
+}
+
+/* =====================================================
+   STICKER BADGES
+   ===================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  font-size: 0.72rem;
+  font-weight: 800;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: var(--border-thin);
+  box-shadow: var(--shadow-xs);
+  line-height: 1;
+}
+
+.badge-open {
+  background: #A7F3D0;
+  color: #064E3B;
+}
+
+.badge-closed {
+  background: #FECDD3;
+  color: #881337;
+}
+
+.badge-emergency {
+  background: var(--clr-accent);
+  color: #FFFFFF;
+}
+
+.badge-verified {
+  background: #BAE6FD;
+  color: #0369A1;
+}
+
+/* =====================================================
+   STAR RATING
+   ===================================================== */
+.stars {
+  color: #F59E0B;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0px #121212;
+}
+
+/* =====================================================
+   SCROLLBAR (Brutalist thick track)
+   ===================================================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--clr-bg-alt);
+  border-left: var(--border-thin);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-primary);
+  border: var(--border-thin);
+  border-radius: var(--r-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-black);
+}
+
+/* =====================================================
+   KEYFRAME ANIMATIONS
+   ===================================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.anim-fade-up {
+  animation: fadeInUp var(--t-base) forwards;
+}
+
+.anim-fade-in {
+  animation: fadeIn var(--t-base) forwards;
+}
+
+.page-enter {
+  animation: fadeInUp 0.25s cubic-bezier(0.2, 0, 0, 1) forwards;
+}

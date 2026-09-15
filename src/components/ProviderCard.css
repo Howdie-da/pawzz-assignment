@@ -1,0 +1,164 @@
+/* =====================================================
+   PROVIDER CARD — Neo-Brutalism Style
+   ===================================================== */
+
+.provider-card {
+  background: var(--clr-card);
+  border: var(--border-thick);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  animation: fadeInUp 0.3s cubic-bezier(0.2, 0, 0, 1) both;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--t-bounce), box-shadow var(--t-bounce);
+}
+
+.provider-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.provider-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-xs);
+}
+
+.card-cover {
+  height: 84px;
+  display: flex;
+  align-items: center;
+  padding: var(--sp-md);
+  position: relative;
+  border-bottom: var(--border-main);
+}
+
+.card-icon {
+  font-size: 2.2rem;
+  background: #FFFFFF;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-md);
+  border: var(--border-thin);
+  box-shadow: var(--shadow-xs);
+}
+
+.card-badges {
+  position: absolute;
+  top: var(--sp-sm);
+  right: var(--sp-sm);
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.card-body {
+  padding: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-sm);
+}
+
+.card-type {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--clr-black);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #E0F2FE;
+  padding: 3px 8px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--clr-black);
+}
+
+.card-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--clr-text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.card-specialty {
+  font-size: 0.85rem;
+  color: var(--clr-text-secondary);
+  font-weight: 500;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--sp-sm);
+  border-top: 1.5px dashed #E5E5E5;
+}
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-rating-value {
+  font-weight: 800;
+  font-size: 0.9rem;
+  font-family: var(--font-display);
+  color: var(--clr-black);
+}
+
+.card-reviews {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+  font-weight: 600;
+}
+
+.card-distance {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--clr-black);
+  background: #FEF9C3;
+  padding: 3px 8px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--clr-black);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.distance-icon {
+  font-size: 0.75rem;
+}
+
+.card-species {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.species-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  background: #F4F4F5;
+  border: 1.5px solid var(--clr-black);
+  border-radius: var(--r-sm);
+  color: var(--clr-black);
+  font-family: var(--font-display);
+}

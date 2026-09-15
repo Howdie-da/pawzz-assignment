@@ -1,0 +1,534 @@
+/* =====================================================
+   SOS BUTTON & EMERGENCY ACTION HUB — Neo-Brutalism
+   ===================================================== */
+
+.sos-wrapper {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Floating Panic Button */
+.sos-btn {
+  position: relative;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: var(--clr-accent);
+  border: 3.5px solid var(--clr-black);
+  cursor: var(--cursor-pointer);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 6px 0px var(--clr-black);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.sos-btn:hover {
+  transform: translate(-3px, -3px) scale(1.05);
+  box-shadow: 9px 9px 0px var(--clr-black);
+}
+
+.sos-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0px var(--clr-black);
+}
+
+.sos-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 3px solid var(--clr-accent);
+  animation: pulse-ring 1.8s ease-out infinite;
+  pointer-events: none;
+}
+
+.sos-ring-2 {
+  animation-delay: 0.7s;
+}
+
+.sos-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.sos-emoji {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.sos-label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 0.08em;
+  text-shadow: 1.5px 1.5px 0px var(--clr-black);
+}
+
+/* Accompanying Sticker Tag */
+.sos-pill-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: var(--clr-primary);
+  border: 2px solid var(--clr-black);
+  box-shadow: 3px 3px 0px var(--clr-black);
+  border-radius: var(--r-full);
+  font-size: 0.72rem;
+  font-weight: 900;
+  font-family: var(--font-display);
+  color: var(--clr-black);
+  letter-spacing: 0.04em;
+  cursor: var(--cursor-pointer);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+  white-space: nowrap;
+}
+
+.sos-pill-badge:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px var(--clr-black);
+}
+
+.sos-pill-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--clr-accent);
+  border: 1.5px solid var(--clr-black);
+  border-radius: 50%;
+  animation: pulse-ring 1.5s infinite;
+}
+
+/* Emergency Modal Overlay */
+.sos-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 18, 18, 0.78);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-lg);
+  animation: fadeIn 0.18s ease;
+}
+
+/* Emergency Modal Dialog */
+.sos-modal {
+  width: 100%;
+  max-width: 680px;
+  background: #FFFFFF;
+  border: 4px solid var(--clr-black);
+  border-radius: var(--r-xl);
+  box-shadow: 12px 12px 0px var(--clr-black);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: fadeInUp 0.25s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Caution Hazard Tape Header */
+.sos-hazard-bar {
+  background: var(--clr-primary);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--clr-primary),
+    var(--clr-primary) 14px,
+    #FBBF24 14px,
+    #FBBF24 28px
+  );
+  border-bottom: 3.5px solid var(--clr-black);
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: var(--clr-black);
+  letter-spacing: 0.08em;
+}
+
+.sos-close-btn {
+  position: absolute;
+  top: 42px;
+  right: 18px;
+  background: #FEE2E2;
+  border: 2px solid var(--clr-black);
+  box-shadow: 2px 2px 0px var(--clr-black);
+  cursor: var(--cursor-pointer);
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--clr-black);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--t-fast);
+  z-index: 2;
+}
+
+.sos-close-btn:hover {
+  transform: translate(-1px, -1px);
+  background: #FECDD3;
+}
+
+.sos-modal-content {
+  padding: var(--sp-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+/* Header */
+.sos-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  padding-right: 48px;
+}
+
+.sos-header-icon {
+  font-size: 2.6rem;
+  background: #FEE2E2;
+  border: 2.5px solid var(--clr-black);
+  box-shadow: 3px 3px 0px var(--clr-black);
+  border-radius: var(--r-md);
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.sos-modal-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--clr-black);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.sos-modal-subtitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--clr-text-secondary);
+  margin-top: 4px;
+}
+
+/* Fastest Ambulance Call Banner */
+.sos-action-banner {
+  background: #FFF1F2;
+  border: 3px solid var(--clr-black);
+  border-radius: var(--r-lg);
+  box-shadow: 4px 4px 0px var(--clr-black);
+  padding: var(--sp-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  flex-wrap: wrap;
+}
+
+.sos-banner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sos-banner-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.68rem;
+  font-weight: 900;
+  background: var(--clr-accent);
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border: 1.5px solid var(--clr-black);
+  border-radius: var(--r-sm);
+  letter-spacing: 0.05em;
+}
+
+.sos-banner-title {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--clr-black);
+}
+
+.sos-banner-eta {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #DC2626;
+}
+
+.sos-banner-call {
+  padding: 12px 22px;
+  font-size: 1rem;
+  border-width: 3px;
+  flex-shrink: 0;
+}
+
+/* Auto-Dispatch Box */
+.sos-dispatch-box {
+  background: var(--clr-bg);
+  border: 2.5px solid var(--clr-black);
+  border-radius: var(--r-lg);
+  box-shadow: 3px 3px 0px var(--clr-black);
+  padding: var(--sp-md) var(--sp-lg);
+}
+
+.sos-dispatch-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  flex-wrap: wrap;
+}
+
+.sos-dispatch-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--clr-black);
+}
+
+.sos-dispatch-sub {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-text-secondary);
+  margin-top: 2px;
+}
+
+.sos-dispatch-btn {
+  padding: 10px 20px;
+  font-size: 0.92rem;
+  flex-shrink: 0;
+}
+
+.sos-dispatch-active {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  background: #A7F3D0;
+  border: 2px solid var(--clr-black);
+  border-radius: var(--r-md);
+  padding: var(--sp-md);
+  animation: fadeIn 0.3s ease;
+}
+
+.sos-active-icon {
+  font-size: 2rem;
+}
+
+.sos-active-text {
+  flex: 1;
+}
+
+.sos-active-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #064E3B;
+}
+
+.sos-active-sub {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #047857;
+  margin-top: 2px;
+}
+
+.sos-eta-badge {
+  background: #FFFFFF;
+  border: 2px solid var(--clr-black);
+  box-shadow: 2px 2px 0px var(--clr-black);
+  padding: 6px 14px;
+  border-radius: var(--r-md);
+  font-weight: 900;
+  font-size: 0.95rem;
+  color: var(--clr-black);
+  white-space: nowrap;
+}
+
+/* Sections */
+.sos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sos-section-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--clr-black);
+  letter-spacing: -0.01em;
+}
+
+/* Providers List */
+.sos-providers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sos-provider-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  background: #FFFFFF;
+  border: 2px solid var(--clr-black);
+  box-shadow: 2px 2px 0px var(--clr-black);
+  border-radius: var(--r-md);
+  padding: 12px 16px;
+  flex-wrap: wrap;
+}
+
+.sos-prov-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sos-prov-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--clr-black);
+}
+
+.sos-prov-meta {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--clr-text-secondary);
+}
+
+.sos-prov-dist {
+  color: #D97706;
+  font-weight: 800;
+}
+
+.sos-prov-addr {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+}
+
+.sos-prov-call-btn {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* First Aid Guidance Tabs */
+.sos-first-aid-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sos-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--r-md);
+  border: 2px solid var(--clr-black);
+  background: var(--clr-bg);
+  box-shadow: 2px 2px 0px var(--clr-black);
+  cursor: var(--cursor-pointer);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--clr-black);
+  transition: all var(--t-fast);
+}
+
+.sos-tab-btn:hover {
+  background: #FEF9C3;
+  transform: translate(-1px, -1px);
+}
+
+.sos-tab-btn.active {
+  background: var(--clr-primary);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--clr-black);
+}
+
+.sos-first-aid-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-md);
+  background: #FEF3C7;
+  border: 2.5px solid var(--clr-black);
+  border-radius: var(--r-md);
+  box-shadow: 3px 3px 0px var(--clr-black);
+  padding: var(--sp-md) var(--sp-lg);
+}
+
+.sos-fa-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.sos-fa-text {
+  font-size: 0.92rem;
+  color: var(--clr-black);
+  line-height: 1.55;
+}
+
+.sos-fa-heading {
+  font-weight: 900;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+/* Footer Actions */
+.sos-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  padding-top: var(--sp-sm);
+  border-top: 2px dashed #E5E5E5;
+  flex-wrap: wrap;
+}
+
+.sos-loc-btn {
+  font-size: 0.88rem;
+  padding: 10px 18px;
+}
+
+@media (max-width: 640px) {
+  .sos-wrapper {
+    bottom: 20px;
+    right: 20px;
+  }
+  .sos-btn {
+    width: 68px;
+    height: 68px;
+  }
+  .sos-modal {
+    padding: 0;
+  }
+  .sos-action-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sos-banner-call {
+    width: 100%;
+  }
+  .sos-dispatch-prompt {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sos-dispatch-btn {
+    width: 100%;
+  }
+  .sos-footer-actions {
+    flex-direction: column;
+  }
+  .sos-footer-actions button {
+    width: 100%;
+  }
+}
